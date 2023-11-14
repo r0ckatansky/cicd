@@ -16,7 +16,7 @@ class APITestSuite {
   }
 
   run() {
-    return describe('API', () => {
+    describe('API', () => {
       it('should return "Hello, World!" when GET /', (done) => {
         request(this.app)
         .get('/')

@@ -19,17 +19,23 @@ class APITestSuite {
     return describe('API', () => {
       it('should return "Hello, World!" when GET /', (done) => {
         request(this.app)
-          .get('/')
-          .expect(200)
-          .end((err, res) => {
-            if (err) return done(err);
-            assert.equal(res.text, 'Hello, World!');
-            done();
-          });
+        .get('/')
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            done(err); // Assurez-vous que done est appelé avec l'erreur
+            return;
+          }
+          assert.equal(res.text, 'Hello, World!');
+          done();
+        });
       });
     });
   }
 }
+
+
+
 
 const apiTestSuite = new APITestSuite();
 apiTestSuite.run();
